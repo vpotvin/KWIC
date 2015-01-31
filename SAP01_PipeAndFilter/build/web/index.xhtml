@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>KWIC</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-3">
+                    <h1>Key Word In Context</h1>
+                    <h:form >
+                        <div class="form-group">
+                            <label for="input">Input</label>
+                            <h:inputTextarea id="input" class="form-control" rows="10" value="#{kwic.input}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="output">Output</label>
+                            <h:inputTextarea id="output" class="form-control" rows="15" value="#{kwic.output}"/>
+                        </div>
+                        <h:commandButton value="Process" class="btn btn-primary" action="#{kwic.startFilter}"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+
