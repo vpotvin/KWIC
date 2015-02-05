@@ -15,19 +15,23 @@ public class SortFilter extends Filter {
     
     @Override
     public void run(){
-        boolean running = true;
         String data;
+        // container for recieved strings 
         List values = new ArrayList<String>();
         
         
-        while(running){
+        while(true){
                 data = this.inPipe.PullData();
                 
+                // when terminating string is found sort the array and 
+                // push the values to the output pipe
                 if(data.equals("#DONE")){
-                    running = false;
 
                     Collections.sort(values);
                     
+                    // add the terminating string to the end of the array
+                    // so that the next filter will know when to end it's 
+                    // execution. 
                     values.add("#DONE");
                     
                     Iterator iterator = values.iterator();
@@ -40,12 +44,6 @@ public class SortFilter extends Filter {
                 }
 
             values.add(data);
-        }
-        
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
         }
     }
 }

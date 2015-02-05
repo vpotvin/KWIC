@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Lynns-MacBook-Air.local" name="com.barnett.kwic.KwicTest" skipped="0" tests="5" time="1.769" timestamp="2015-02-05T05:39:37">
+<testsuite errors="0" failures="0" hostname="Lynns-MacBook-Air.local" name="com.barnett.kwic.KwicTest" skipped="0" tests="5" time="0.684" timestamp="2015-02-05T05:51:34">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -62,7 +62,7 @@
     <property name="libs.Comet-GlassFish-v3.javadoc" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.barnett.kwic.KwicTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/lynnbarnett/Dropbox/School/SA/SAP01_PipeAndFilter/build/test/results/TEST-com.barnett.kwic.KwicTest.xml crashfile=/Users/lynnbarnett/Dropbox/School/SA/SAP01_PipeAndFilter/build/junitvmwatcher2161123021870750312.properties propsfile=/Users/lynnbarnett/Dropbox/School/SA/SAP01_PipeAndFilter/build/junit14031958732756975.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.barnett.kwic.KwicTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/lynnbarnett/Dropbox/School/SA/SAP01_PipeAndFilter/build/test/results/TEST-com.barnett.kwic.KwicTest.xml crashfile=/Users/lynnbarnett/Dropbox/School/SA/SAP01_PipeAndFilter/build/junitvmwatcher6839058478292780458.properties propsfile=/Users/lynnbarnett/Dropbox/School/SA/SAP01_PipeAndFilter/build/junit6113589332731559349.properties" />
     <property name="build.classes.dir" value="build/web/WEB-INF/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="ap.supported.internal" value="true" />
@@ -423,17 +423,12 @@
     <property name="war.ear.name" value="SAP01_PipeAndFilter.war" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="/Applications/NetBeans/NetBeans 8.0.1.app/Contents/Resources/NetBeans/enterprise/docs/javaee-doc-api.jar" />
   </properties>
-  <testcase classname="com.barnett.kwic.KwicTest" name="testStartFilter" time="1.517" />
+  <testcase classname="com.barnett.kwic.KwicTest" name="testStartFilter" time="0.512" />
   <testcase classname="com.barnett.kwic.KwicTest" name="testGetInput" time="0.0" />
-  <testcase classname="com.barnett.kwic.KwicTest" name="testSetInput" time="0.0" />
+  <testcase classname="com.barnett.kwic.KwicTest" name="testSetInput" time="0.001" />
   <testcase classname="com.barnett.kwic.KwicTest" name="testGetOutput" time="0.0" />
-  <testcase classname="com.barnett.kwic.KwicTest" name="testSetOutput" time="0.0" />
+  <testcase classname="com.barnett.kwic.KwicTest" name="testSetOutput" time="0.001" />
   <system-out><![CDATA[MAIN TEST
-A test
-B test
-test A
-test B
-
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

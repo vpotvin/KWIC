@@ -67,7 +67,6 @@ public class KwicTest {
             f5 = null;
         }
         
-        System.out.println(f5.getOutput());
         assertTrue(f5.getOutput().equals("A test\nB test\ntest A\ntest B\n"));
     }
 
