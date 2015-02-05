@@ -3,6 +3,7 @@ package pipeandfilter;
 public class OutputFilter  extends Filter{
     
     private String output;
+    private boolean running;
     
     public OutputFilter(Pipe inPipe){
         super(inPipe, null);
@@ -14,7 +15,8 @@ public class OutputFilter  extends Filter{
         while(true){
             String value = this.inPipe.PullData();
             if(value.equals("#DONE")){
-
+                
+                running = false;
                 break;
             } else{
                 output += value + "\n";
@@ -29,6 +31,7 @@ public class OutputFilter  extends Filter{
     }
     
     public String getOutput(){
+        while(running);
         return this.output;
     }
 }
