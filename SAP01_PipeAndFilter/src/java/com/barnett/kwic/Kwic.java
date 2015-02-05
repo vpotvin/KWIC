@@ -14,7 +14,7 @@ public class Kwic{
     private String input;
     private String output;
     
-    public String startFilter(){
+    public String startFilter() throws InterruptedException{
         
         // Pipes the connect the filters
         pipeandfilter.Pipe p1 = new pipeandfilter.Pipe();
@@ -48,10 +48,10 @@ public class Kwic{
         t3.start();// Start Sort Filter
         t4.start(); // Start output Filter
         
-        // Spins while output is still builing up the string, once the
+        // waits while output is still builing up the string, once the
         // terminating string is found t4 while no long be alive, and 
         // the program will move on. 
-        while(t4.isAlive());
+        t4.join();
         
         pipeandfilter.OutputFilter f5;
         if (f4 instanceof pipeandfilter.OutputFilter) {
@@ -61,11 +61,7 @@ public class Kwic{
         }
         
         
-        String test = f5.getOutput();
-        
-     
-        
-        System.out.println(test);
+        String test = f5.getOutput();        
         
         this.output = test;
         

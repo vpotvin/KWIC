@@ -31,7 +31,6 @@ public class OutputFilter  extends Filter{
     }
     
     public String getOutput(){
-        while(running);
         return this.output;
     }
 }
