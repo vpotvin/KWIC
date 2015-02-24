@@ -4,11 +4,17 @@ public class OutputFilter  extends Filter{
     
     private String output;
     
+    
+    // Calls superclass constuctor with null as the output pipe because
+    // Output prints to the command line
     public OutputFilter(Pipe inPipe){
         super(inPipe, null);
         this.output = "";
     }
     
+    
+    // get values from the input pipe until the terminating string is found, 
+    // and prints them to the command line 
     @Override
     public void run(){
         while(true){
@@ -20,11 +26,6 @@ public class OutputFilter  extends Filter{
             }
         }
         
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
     }
     
     public String getOutput(){

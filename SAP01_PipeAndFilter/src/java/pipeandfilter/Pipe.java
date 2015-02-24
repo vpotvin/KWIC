@@ -12,6 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Pipe {
  
+    // queue that can be used by multiple threads 
     private BlockingQueue<String> dataBuffer;
     
     public Pipe(){
