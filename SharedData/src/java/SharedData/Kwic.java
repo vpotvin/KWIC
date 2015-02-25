@@ -14,7 +14,7 @@ public class Kwic{
     private String input;
     private String output;
     private LineStorage ls;
-    private InputFilter inputF;
+    private Input inputF;
     
     @PostConstruct
     private void init(){
@@ -27,9 +27,7 @@ public class Kwic{
     }
 
     public void setInput(String input) {
-        inputF = new InputFilter(input, ls);
-        
-        
+        inputF = new Input(input, ls);
         
         this.input = input;
     }
