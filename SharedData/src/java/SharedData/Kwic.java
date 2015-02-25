@@ -27,7 +27,7 @@ public class Kwic{
     }
 
     public void setInput(String input) {
-        inputF = new Input(input, ls);
+        Input.processInput(input, ls);
         
         this.input = input;
     }

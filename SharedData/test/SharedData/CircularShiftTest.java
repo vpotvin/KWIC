@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Victoria
  */
-public class InputTest {
+public class CircularShiftTest {
     
-    public InputTest() {
+    public CircularShiftTest() {
     }
     
     @BeforeClass
@@ -37,17 +37,17 @@ public class InputTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of shiftLines method, of class CircularShift.
+     */
     @Test
-    public void testProcessInput() {
-        
+    public void testShiftLines() {
+        System.out.println("shiftLines");
         LineStorage ls = new LineStorage();
-        Input.processInput("I am input", ls);
-        System.out.println("The value is: " + ls.getLine(0).toString());
-        
-        assertTrue(ls.getLine(0).toString().equals("I am input "));
-        assertEquals(1, ls.size());
-        assertEquals(3, ls.getLine(0).size());
-        
+        Input.processInput("I am a line", ls);
+        CircularShift.shiftLines(ls);
+        // TODO review the generated test code and remove the default call to fail.
+        assertEquals(3, ls.size());
     }
     
 }

@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Victoria
  */
-public class InputTest {
+public class OutputTest {
     
-    public InputTest() {
+    public OutputTest() {
     }
     
     @BeforeClass
@@ -38,16 +38,13 @@ public class InputTest {
     }
 
     @Test
-    public void testProcessInput() {
-        
+    public void testOut() {
         LineStorage ls = new LineStorage();
-        Input.processInput("I am input", ls);
-        System.out.println("The value is: " + ls.getLine(0).toString());
+        Input.processInput("I am a line\nThis is line 2", ls);
         
-        assertTrue(ls.getLine(0).toString().equals("I am input "));
-        assertEquals(1, ls.size());
-        assertEquals(3, ls.getLine(0).size());
+        String output = Output.out(ls);
         
+        assertEquals("I am a line\n This is line 2 ", output);
     }
     
 }

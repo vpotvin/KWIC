@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Victoria
  */
-public class InputTest {
+public class SortTest {
     
-    public InputTest() {
+    public SortTest() {
     }
     
     @BeforeClass
@@ -37,17 +37,17 @@ public class InputTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of sort method, of class Sort.
+     */
     @Test
-    public void testProcessInput() {
-        
+    public void testSort() {
+        System.out.println("sort");
         LineStorage ls = new LineStorage();
-        Input.processInput("I am input", ls);
-        System.out.println("The value is: " + ls.getLine(0).toString());
         
-        assertTrue(ls.getLine(0).toString().equals("I am input "));
-        assertEquals(1, ls.size());
-        assertEquals(3, ls.getLine(0).size());
-        
+        Sort.sort(ls);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

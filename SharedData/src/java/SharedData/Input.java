@@ -2,17 +2,15 @@ package SharedData;
 
 
 public class Input{
-        
-    private String input;
     
 
-    public Input(String input, LineStorage ls){
-        this.input = input;
-        processInput(ls);
-    }
+//    public Input(String input, LineStorage ls){
+//        this.input = input;
+//        processInput(ls);
+//    }
    
     // Splits input string based on new lines
-    private void processInput(LineStorage ls){
+    public static void processInput(String input, LineStorage ls){
         String[] lines = input.split("\\r?\\n");
         int lineNum = 0;
         for(String l: lines){ 

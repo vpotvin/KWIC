@@ -12,6 +12,14 @@ public class Line {
         wordCount = 0;
     }
     
+    public Line(Line l) {
+        this.l = new ArrayList<>();
+        
+        for(int i = 0; i < l.size(); i++) {
+            this.l.add(l.getWord(i));
+        }
+    }
+    
     public void setWord(int pos, String word){
         l.add(word);
         wordCount++;
@@ -23,6 +31,16 @@ public class Line {
     
     public String getWord(int i){
         return l.get(i);
+    }
+    
+    public void remove(int i) {
+        l.remove(i);
+        wordCount--;
+    }
+    
+    public void add(String s){
+        l.add(s);
+        wordCount++;
     }
     
     public String toString(){

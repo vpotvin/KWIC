@@ -35,4 +35,8 @@ public class LineStorage {
         return lines.get(i);
     }
     
+    public void add(Line l) {
+       lines.add(l);
+       linesNum++;
+    }
 }
