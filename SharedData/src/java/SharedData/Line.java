@@ -1,6 +1,7 @@
 package SharedData;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Line {
@@ -20,6 +21,13 @@ public class Line {
         }
     }
     
+    public void print(){
+        for(int i= 0; i < l.size(); i++){
+            System.out.printf("%s", l.get(i));
+        }
+        System.out.println();
+    }
+    
     public void setWord(int pos, String word){
         l.add(word);
         wordCount++;
@@ -30,6 +38,7 @@ public class Line {
     }
     
     public String getWord(int i){
+        
         return l.get(i);
     }
     

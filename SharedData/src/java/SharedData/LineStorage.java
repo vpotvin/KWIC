@@ -27,6 +27,10 @@ public class LineStorage {
         
     }
     
+    public String getWord(int line, int word){
+        return lines.get(line).getWord(word);
+    }
+    
     public int size(){
         return this.linesNum;
     }
@@ -38,5 +42,9 @@ public class LineStorage {
     public void add(Line l) {
        lines.add(l);
        linesNum++;
+    }
+    
+    public int lineSize(int i){
+        return lines.get(i).size();
     }
 }

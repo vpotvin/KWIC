@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package SharedData;
 
-/**
- *
- * @author Victoria
- */
+
 public class Sort {
-    public static void sort(LineStorage ls) {
-        
+    
+    
+    
+    public static void sort(ShiftIndex si, Tree t) {
+        for(int i = 0; i < si.getSize(); i++){
+            t.insert(si.getLine(i));
+        }
     }
 }
