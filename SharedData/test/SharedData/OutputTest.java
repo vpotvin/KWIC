@@ -37,14 +37,20 @@ public class OutputTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of CreateOuput method, of class Output.
+     */
     @Test
-    public void testOut() {
+    public void testCreateOuput() {
+        System.out.println("CreateOuput");
         LineStorage ls = new LineStorage();
-        Input.processInput("I am a line\nThis is line 2", ls);
-        
-        String output = Output.out(ls);
-        
-        assertEquals("I am a line\n This is line 2 ", output);
+        Input.processInput("aa Aa AA aA", ls);
+        Tree indexHolder = new Tree(ls);
+        String expResult = "aa Aa AA aA";
+        String result = Output.CreateOuput(indexHolder);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+ 
     }
     
 }

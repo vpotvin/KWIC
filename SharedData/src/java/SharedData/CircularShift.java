@@ -35,14 +35,7 @@ public class CircularShift {
                     
                     indexHolder.insert(tempHolder);
                 }
-            }
-            
-
-
-            
-        }
-
-               
-
+            }          
+        }               
     }
 }

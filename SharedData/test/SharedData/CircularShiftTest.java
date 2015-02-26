@@ -44,9 +44,9 @@ public class CircularShiftTest {
     public void testShiftLines() {
         System.out.println("shiftLines");
         LineStorage ls = new LineStorage();
-        Input.processInput("I am a line", ls);
-        CircularShift.shiftLines(ls);
-        // TODO review the generated test code and remove the default call to fail.
+        Tree indexHolder = new Tree(ls);
+        Input.processInput("I am a line.", ls);
+        CircularShift.shiftLines(ls, indexHolder);
         assertEquals(3, ls.size());
     }
     

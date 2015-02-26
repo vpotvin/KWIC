@@ -3,7 +3,6 @@ package SharedData;
 
 public class Tree {
     private Node root;
-    private ShiftIndex si;
     private LineStorage ls;
 
     public Tree(LineStorage ls) {
