@@ -1,10 +1,10 @@
 package SharedData;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
+
 
 
 
@@ -13,7 +13,7 @@ public class CircularShift {
         "of", "to", "be", "is", "in", "out", "by", "as", "at", "off"};
     
     
-    public static void shiftLines(LineStorage ls, ShiftIndex si){
+    public static void shiftLines(LineStorage ls, Tree indexHolder){
         for(int i=0; i < ls.size();i++){
             Line l = ls.getLine(i);
 
@@ -31,7 +31,9 @@ public class CircularShift {
                     Integer[] t = new Integer[tempList.size()];
                     tempList.toArray(t);
                     
-                    si.addLine(t, i);
+                    LineHolder tempHolder = new LineHolder(t, i);
+                    
+                    indexHolder.insert(tempHolder);
                 }
             }
             

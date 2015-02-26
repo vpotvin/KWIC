@@ -14,15 +14,12 @@ public class Kwic{
     private String input;
     private String output;
     private LineStorage ls;
-    private ShiftIndex si;
-    private Input inputF;
-    private Tree sorted;
+    private Tree indexHolder;
     
     @PostConstruct
     private void init(){
         ls = new LineStorage();
-        si = new ShiftIndex();
-        sorted = new Tree(si, ls);
+        indexHolder = new Tree(ls);
     }
     
     
@@ -30,15 +27,8 @@ public class Kwic{
         return input;
     }
 
-    public void setInput(String input) {
-        Input.processInput(input, ls);
-        CircularShift.shiftLines(ls, si);
-        Sort.sort(si, sorted);
-        sorted.printTree();
-        
+    public void setInput(String input) {        
         this.input = input;
-        
-        //this.output = si.buildString(ls);
     }
 
     public String getOutput() {
@@ -47,6 +37,17 @@ public class Kwic{
 
     public void setOutput(String output) {
         this.output = output;
+    }
+    
+    public void run(){
+
+        Input.processInput(input, ls);
+
+        CircularShift.shiftLines(ls, indexHolder);
+
+        this.output = Output.CreateOuput(indexHolder);
+
+        System.out.println(this.output);
     }
     
 

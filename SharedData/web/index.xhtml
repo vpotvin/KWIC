@@ -20,7 +20,7 @@
                             <label for="output">Output</label>
                             <h:inputTextarea id="output" class="form-control" rows="15" value="#{kwic.output}"/>
                         </div>
-                        <h:commandButton value="Process" class="btn btn-primary"/>
+                        <h:commandButton value="Process" class="btn btn-primary" action="#{kwic.run()}"/>
                     </h:form>
                 </div>
             </div>

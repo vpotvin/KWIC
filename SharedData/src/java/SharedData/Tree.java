@@ -6,9 +6,8 @@ public class Tree {
     private ShiftIndex si;
     private LineStorage ls;
 
-    public Tree(ShiftIndex s, LineStorage ls) {
+    public Tree(LineStorage ls) {
         root = null;
-        this.si = s;
         this.ls = ls;
     }
     
@@ -26,15 +25,15 @@ public class Tree {
             
             String dataString = "";
             for(int l = 0; l < data.line.length; l++){
-                dataString += data.line[l];
+                dataString += ls.getWord(data.lineNumber, data.line[l]);
             }
             
             String nodeString = "";
             for(int l = 0; l < node.line.line.length; l++){
-                nodeString += node.line.line[l];
+                nodeString += ls.getWord(node.line.lineNumber, node.line.line[l]);
             }
-
-            if(dataString.compareTo(nodeString) <= 0){
+            
+            if(dataString.compareToIgnoreCase(nodeString) <= 0){
                 node.left = insert(node.left, data);
             } else {
                 node.right = insert(node.right, data);
@@ -47,17 +46,25 @@ public class Tree {
     
     
     
-    public void printTree() {
-        printTree(root);
-        System.out.println();
+    public StringBuilder printTree() {
+        
+        StringBuilder output = new StringBuilder();
+        printTree(root, output);
+        return output;
     }
 
-    private void printTree(Node node) {
+    private void printTree(Node node, StringBuilder output) {
         if (node == null) return;
         
-        printTree(node.left);
-        System.out.print(node.line + "  ");
-        printTree(node.right);
+        printTree(node.left, output);
+               
+        for(int i = 0; i < node.line.line.length; i++){
+            output.append(ls.getWord(node.line.lineNumber, node.line.line[i]) + " ");
+        }
+        
+        output.append("\n");
+        
+        printTree(node.right, output);
 } 
     
 
