@@ -1,5 +1,9 @@
 package SharedData;
 
+import java.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+
 
 public class Tree {
     private Node root;
@@ -31,8 +35,8 @@ public class Tree {
             for(int l = 0; l < node.line.line.length; l++){
                 nodeString += ls.getWord(node.line.lineNumber, node.line.line[l]);
             }
-            
-            if(dataString.compareToIgnoreCase(nodeString) <= 0){
+            Collator collator = Collator.getInstance(Locale.ENGLISH);
+            if(collator.compare(dataString, nodeString) < 0){
                 node.left = insert(node.left, data);
             } else {
                 node.right = insert(node.right, data);
@@ -65,7 +69,20 @@ public class Tree {
         
         printTree(node.right, output);
 } 
-    
+//    @Override
+//    public int compare(String dataString, String nodeString) {
+//        
+//        if (dataString.toLowerCase().equals(nodeString.toLowerCase())) {
+//                if (dataString.toLowerCase().equals(dataString)) {
+//                        return -1;
+//                } else {
+//                        return  1;
+//                }
+//        } else {
+//                return dataString.toLowerCase().compareTo(nodeString.toLowerCase());
+//
+//        }
+//    }
 
     public static class Node {
         private LineHolder line;
