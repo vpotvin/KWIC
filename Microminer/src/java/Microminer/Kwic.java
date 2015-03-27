@@ -1,6 +1,7 @@
 package Microminer;
 
 
+import java.sql.SQLException;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -16,10 +17,13 @@ public class Kwic{
     private LineStorage ls;
     private Tree indexHolder;
     
+    private Input i;
+    
     @PostConstruct
     private void init(){
         ls = new LineStorage();
         indexHolder = new Tree(ls);
+        i = new Input();
     }
     
     
@@ -39,9 +43,9 @@ public class Kwic{
         this.output = output;
     }
     
-    public void run(){
+    public void run() throws SQLException{
 
-        Input.processInput(input, ls);
+        i.processInput(input, ls);
 
         CircularShift.shiftLines(ls, indexHolder);
 
