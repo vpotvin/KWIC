@@ -7,6 +7,7 @@ import java.util.List;
 public class Line {
     private List<String> l;
     private int wordCount;
+    private long DBID;
    
     public Line(){
         l = new ArrayList<>();
@@ -59,4 +60,13 @@ public class Line {
         }
         return stringl;
     }
+    
+    public long getDBID(){
+        return this.DBID;
+    }
+    
+    public void setDBID(long i){
+        this.DBID = i;
+    }
+    
 }

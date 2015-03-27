@@ -13,9 +13,10 @@ public class LineStorage {
     }
     
     
-    public void setWord(int line, int wordNum, String word){
+    public void setWord(int line, int wordNum, String word, long dbid){
         if(line >= lines.size()){
             Line newLine = new Line();
+            newLine.setDBID(dbid);
             newLine.setWord(wordNum, word);
             lines.add(newLine);
             linesNum++;
