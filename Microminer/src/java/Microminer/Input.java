@@ -1,5 +1,6 @@
 package Microminer;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,10 +9,14 @@ import java.sql.Statement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.Resource;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import javax.sql.DataSource;
 
 
-public class Input{
+@Named(value = "input")
+@ApplicationScoped
+public class Input implements Serializable{
     
     @Resource(name="jdbc/sa")
     private DataSource ds;
@@ -31,6 +36,7 @@ public class Input{
             Matcher URLMatcher = URLPattern.matcher(l);
                         
             if(!URLMatcher.find()){
+                System.out.println("URL MATCH CONTINUE");
                 continue;
             }
 
@@ -38,19 +44,17 @@ public class Input{
             
 
             String sURL = URLMatcher.group();
+            
 
             String[] desArray = l.split(",");
             
             if(desArray.length > 2){
+               System.out.println("ARRAY CONTINUE");
                continue; 
             }
             
             String description = desArray[1].trim();
-            
- 
-
-
-            
+                        
             if (ds == null) {
                 throw new SQLException("CANNOT GET DATASOURCE");
             }
@@ -84,7 +88,7 @@ public class Input{
                         throw new SQLException("CANNOT GET GENERATED KEY");
                     }
                     
-            
+                    conn.commit();
                 } finally {
                     if (!committed) {
                         conn.rollback();

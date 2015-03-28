@@ -4,6 +4,7 @@ package Microminer;
 import java.sql.SQLException;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 // Nameed Bean the takes input the input from the form starts connects all the 
@@ -17,13 +18,13 @@ public class Kwic{
     private LineStorage ls;
     private Tree indexHolder;
     
-    private Input i;
-    
+    @Inject   
+    private Input in;
+     
     @PostConstruct
     private void init(){
         ls = new LineStorage();
         indexHolder = new Tree(ls);
-        i = new Input();
     }
     
     
@@ -45,7 +46,7 @@ public class Kwic{
     
     public void run() throws SQLException{
 
-        i.processInput(input, ls);
+        in.processInput(this.input, ls);
 
         CircularShift.shiftLines(ls, indexHolder);
 
