@@ -28,10 +28,9 @@ public class CircularShift {
                 
                 if(!Arrays.asList(noiseWords).contains(l.getWord(tempList.get(0)))){
                     
-                    Integer[] t = new Integer[tempList.size()];
-                    tempList.toArray(t);
+                    int k = tempList.get(0);
                     
-                    LineHolder tempHolder = new LineHolder(t, i);
+                    LineHolder tempHolder = new LineHolder(k, i, l.getDBID());
                     
                     indexHolder.insert(tempHolder);
                 }
