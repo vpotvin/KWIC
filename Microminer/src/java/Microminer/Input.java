@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.sql.DataSource;
 
@@ -21,9 +22,12 @@ public class Input implements Serializable{
     @Resource(name="jdbc/sa")
     private DataSource ds;
 
+    @Inject
+    private LineStorage ls;
+    
    
     // Splits input string based on new lines
-    public void processInput(String input, LineStorage ls) throws SQLException{
+    public void processInput(String input) throws SQLException{
         String[] lines = input.split("\\r?\\n");
         int lineNum = 0;
         
@@ -36,7 +40,6 @@ public class Input implements Serializable{
             Matcher URLMatcher = URLPattern.matcher(l);
                         
             if(!URLMatcher.find()){
-                System.out.println("URL MATCH CONTINUE");
                 continue;
             }
 
@@ -69,23 +72,34 @@ public class Input implements Serializable{
                 boolean committed = false;
                 conn.setAutoCommit(false);
                 try{
-                    String query = "INSERT INTO LINE_STORAGE(URL, DESCRIPTION) "
+                    
+                    String checkQuery = "SELECT ID FROM LINE_STORAGE WHERE URL = ?";
+                    
+                    PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+                    checkStmt.setString(1, sURL);
+                    
+                    ResultSet rs = checkStmt.executeQuery();
+                    if(rs.next()){
+                        key = rs.getLong(1);
+                    } else {
+                        String query = "INSERT INTO LINE_STORAGE(URL, DESCRIPTION) "
                                                                + "VALUES(?, ?)";
                     
-                    PreparedStatement stmt = conn.prepareStatement(query,
+                        PreparedStatement stmt = conn.prepareStatement(query,
                                                Statement.RETURN_GENERATED_KEYS);
                     
-                    stmt.setString(1, sURL);
-                    stmt.setString(2, description);
+                        stmt.setString(1, sURL);
+                        stmt.setString(2, description);
                     
-                    stmt.executeUpdate();
-                    ResultSet gk = stmt.getGeneratedKeys();
+                        stmt.executeUpdate();
+                        ResultSet gk = stmt.getGeneratedKeys();
                     
                     
-                    if (gk.next()) {
-                        key = gk.getLong(1);
-                    }else{
-                        throw new SQLException("CANNOT GET GENERATED KEY");
+                        if (gk.next()) {
+                            key = gk.getLong(1);
+                        }else{
+                            throw new SQLException("CANNOT GET GENERATED KEY");
+                        }
                     }
                     
                     conn.commit();
@@ -99,7 +113,7 @@ public class Input implements Serializable{
             }
             
             int wordNum = 0;
-            for (String word : l.split("\\s+")) {
+            for (String word : description.split("\\s+")) {
                 ls.setWord(lineNum, wordNum, word, key);
                 wordNum++;
             }
