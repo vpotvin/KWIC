@@ -5,13 +5,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class Line {
-    private List<String> l;
+    private ArrayList<String> l;
     private int wordCount;
     private long DBID;
    
     public Line(){
         l = new ArrayList<>();
         wordCount = 0;
+    }
+    
+    public ArrayList<String> getWords(){
+        return this.l;
+        
     }
     
     public Line(Line l) {
