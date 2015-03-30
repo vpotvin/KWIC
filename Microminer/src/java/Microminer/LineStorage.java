@@ -1,13 +1,20 @@
 package Microminer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
-public class LineStorage {
-    private List<Line> lines;
+@Named(value = "ls")
+@ApplicationScoped
+public class LineStorage implements Serializable{
+    private ArrayList<Line> lines;
     private int linesNum;
     
-    public LineStorage(){
+    @PostConstruct
+    public void init(){
         lines = new ArrayList<>();
         linesNum = 0;
     }
@@ -40,6 +47,10 @@ public class LineStorage {
         return lines.get(i);
     }
     
+    public ArrayList<Line> getLines(){
+        return this.lines;
+    }
+    
     public void add(Line l) {
        lines.add(l);
        linesNum++;
@@ -49,3 +60,4 @@ public class LineStorage {
         return lines.get(i).size();
     }
 }
+
