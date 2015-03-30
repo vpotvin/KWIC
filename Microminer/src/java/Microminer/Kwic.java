@@ -15,17 +15,16 @@ import javax.inject.Named;
 public class Kwic{
     private String input;
     private String output;
-    private LineStorage ls;
-    private Tree indexHolder;
+
     
     @Inject   
     private Input in;
-     
-    @PostConstruct
-    private void init(){
-        ls = new LineStorage();
-        indexHolder = new Tree(ls);
-    }
+    
+    @Inject   
+    private CircularShift cs;
+    
+
+
     
     
     public String getInput() {
@@ -46,16 +45,17 @@ public class Kwic{
     
     public void run() throws SQLException{
 
-        in.processInput(this.input, ls);
+        in.processInput(this.input);
 
-        CircularShift.shiftLines(ls, indexHolder);
+        cs.shiftLines();
+//
+//        this.output = Output.CreateOuput(indexHolder);
 
-        this.output = Output.CreateOuput(indexHolder);
-
-        System.out.println(this.output);
+//        System.out.println(this.output);
     }
     
 
     
     
 }
+
