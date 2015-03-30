@@ -10,18 +10,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-lg-offset-3">
-                    <h1>Key Word In Context</h1>
-                    <h:form >
-                        <div class="form-group">
-                            <label for="input">Input</label>
-                            <h:inputTextarea id="input" class="form-control" rows="10" value="#{kwic.input}"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="output">Output</label>
-                            <h:inputTextarea id="output" class="form-control" rows="15" value="#{kwic.output}"/>
-                        </div>
-                        <h:commandButton value="Process" class="btn btn-primary" action="#{kwic.run()}"/>
-                    </h:form>
+                    <h1>Welcome To KWIC Search</h1>
+                    
+                    <div class="panel panel-primary">
+                        <h:form>
+                            <h:commandButton class="btn btn-primary btn-block" action="search" value="Search"/>
+                            <h:commandButton class="btn btn-primary btn-block" action="viewInfo" value="View All Indexes"/>
+                            <h:commandButton class="btn btn-primary btn-block" action="input" value="Input Info"/>
+                        </h:form>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
