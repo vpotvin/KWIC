@@ -4,16 +4,27 @@ package Microminer;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 
 
-
+@Named(value = "cs")
+@ApplicationScoped
 public class CircularShift {
+    
+    @Inject
+    private LineStorage ls;
+    
+    @Inject
+    private Tree indexHolder;
+    
     private static final String noiseWords[] = {"a", "an", "the", "and", "or", 
         "of", "to", "be", "is", "in", "out", "by", "as", "at", "off"};
     
     
-    public static void shiftLines(LineStorage ls, Tree indexHolder){
+    public void shiftLines(){
         for(int i=0; i < ls.size();i++){
             Line l = ls.getLine(i);
 
